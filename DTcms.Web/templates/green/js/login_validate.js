@@ -30,10 +30,10 @@ $(function(){
 			},
             success: function(data, textStatus) {
                 if (data.msg == 1){
-					if(typeof(data.url)=="undefined"){
-						location.href = $("#turl").val();
-					}else{
+					if(data.url){
 						location.href = data.url;
+					}else{
+                    	location.href = $("#turl").val();
 					}
                 } else {
                     $("#btnSubmit").attr("disabled", "");
