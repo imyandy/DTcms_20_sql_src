@@ -30,7 +30,11 @@ $(function(){
 			},
             success: function(data, textStatus) {
                 if (data.msg == 1){
-                    location.href = $("#turl").val();
+					if(typeof(data.url)=="undefined"){
+						location.href = $("#turl").val();
+					}else{
+						location.href = data.url;
+					}
                 } else {
                     $("#btnSubmit").attr("disabled", "");
                     $("#msgtips dd").text(data.msgbox);

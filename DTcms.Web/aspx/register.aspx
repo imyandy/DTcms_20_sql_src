@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by DTcms Template Engine at 2012/11/28 23:57:32.
-		本页面代码由DTcms模板引擎生成于 2012/11/28 23:57:32. 
+		This page was created by DTcms Template Engine at 2012-12-6 17:09:34.
+		本页面代码由DTcms模板引擎生成于 2012-12-6 17:09:34. 
 	*/
 
 	base.OnInit(e);
@@ -35,9 +35,6 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("script>\r\n<script type=\"text/javascript\" src=\"");
 	templateBuilder.Append(Utils.ObjectToStr(config.templateskin));
 	templateBuilder.Append("/js/base.js\"></");
-	templateBuilder.Append("script>\r\n<script type=\"text/javascript\" src=\"");
-	templateBuilder.Append(Utils.ObjectToStr(config.templateskin));
-	templateBuilder.Append("/js/register_validate.js\"></");
 	templateBuilder.Append("script>\r\n</head>\r\n\r\n<body>\r\n<!--Header-->\r\n");
 
 	templateBuilder.Append("<div class=\"header\">\r\n  <div class=\"header_inner\">\r\n    <h1 class=\"logo\">\r\n      <a title=\"");
@@ -82,7 +79,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("\r\n      <li><a href=\"");
 	templateBuilder.Append(linkurl("usercenter","exit"));
 
-	templateBuilder.Append("\">注销</a></li>\r\n      <li><a href=\"");
+	templateBuilder.Append("\">退出</a></li>\r\n      <li><a href=\"");
 	templateBuilder.Append(linkurl("usercenter","index"));
 
 	templateBuilder.Append("\">会员中心</a></li>\r\n      ");
@@ -133,6 +130,9 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("script>\r\n        <script type=\"text/javascript\" src=\"");
 	templateBuilder.Append(Utils.ObjectToStr(config.webpath));
 	templateBuilder.Append("scripts/jquery/messages_cn.js\"></");
+	templateBuilder.Append("script>\r\n        <script type=\"text/javascript\" src=\"");
+	templateBuilder.Append(Utils.ObjectToStr(config.templateskin));
+	templateBuilder.Append("/js/register_validate.js\"></");
 	templateBuilder.Append("script>\r\n        <form id=\"regform\" name=\"regform\" url=\"");
 	templateBuilder.Append(Utils.ObjectToStr(config.webpath));
 	templateBuilder.Append("tools/submit_ajax.ashx?action=user_register\">\r\n          ");

@@ -58,7 +58,7 @@ namespace DTcms.Web.UI
                 if (username != "" && password != "")
                 {
                     BLL.users bll = new BLL.users();
-                    Model.users model = bll.GetModel(username, password);
+                    Model.users model = bll.GetModel(username, password, 0);
                     if (model != null)
                     {
                         HttpContext.Current.Session[DTKeys.SESSION_USER_INFO] = model;

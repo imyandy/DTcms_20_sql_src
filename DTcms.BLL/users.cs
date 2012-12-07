@@ -89,9 +89,9 @@ namespace DTcms.BLL
         /// <summary>
         /// 根据用户名密码返回一个实体
         /// </summary>
-        public Model.users GetModel(string user_name, string password)
+        public Model.users GetModel(string user_name, string password, int emaillogin)
         {
-            return dal.GetModel(user_name, password);
+            return dal.GetModel(user_name, password, emaillogin);
         }
 
         /// <summary>

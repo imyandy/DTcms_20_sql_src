@@ -242,7 +242,7 @@ namespace DTcms.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select top 1 id from dt_user_groups");
-            strSql.Append(" where is_lock=0 and is_upgrade=1 and grade>(select grade from dt_user_groups where id=" + group_id + ") and upgrade_exp>=" + exp);
+            strSql.Append(" where is_lock=0 and is_upgrade=1 and grade>(select grade from dt_user_groups where id=" + group_id + ") and upgrade_exp<=" + exp);
             strSql.Append(" order by grade asc");
             object obj = DbHelperSQL.GetSingle(strSql.ToString());
             if (obj != null)

@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by DTcms Template Engine at 2012/11/28 23:57:32.
-		本页面代码由DTcms模板引擎生成于 2012/11/28 23:57:32. 
+		This page was created by DTcms Template Engine at 2012-12-6 17:09:34.
+		本页面代码由DTcms模板引擎生成于 2012-12-6 17:09:34. 
 	*/
 
 	base.OnInit(e);
@@ -86,7 +86,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("\r\n      <li><a href=\"");
 	templateBuilder.Append(linkurl("usercenter","exit"));
 
-	templateBuilder.Append("\">注销</a></li>\r\n      <li><a href=\"");
+	templateBuilder.Append("\">退出</a></li>\r\n      <li><a href=\"");
 	templateBuilder.Append(linkurl("usercenter","index"));
 
 	templateBuilder.Append("\">会员中心</a></li>\r\n      ");

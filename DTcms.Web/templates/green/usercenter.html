@@ -39,7 +39,7 @@
         <%if {userModel.avatar}!=""%>
         <img src="{userModel.avatar}" />
         <%else%>
-        <img src="images/user_avatar.png" alt="求真像" />
+        <img src="{config.templateskin}images/user_avatar.png" alt="求真像" />
         <%/if%>
         <span><a href="<%linkurl("usercenter","avatar")%>">设置头像</a></span>
       </div>
@@ -269,7 +269,6 @@
       <input id="hideY1" name="hideY1" type="hidden" value="0" />
       <input id="hideWidth" name="hideWidth" type="hidden" value="0" />
       <input id="hideHeight" name="hideHeight" type="hidden" value="0" />
-      <input id="turl" name="turl" type="hidden" value="<%linkurl("usercenter","avatar")%>" />
     </form>
     <!--/设置头像-->
     <%else if {action}=="invite"%>

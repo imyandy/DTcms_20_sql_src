@@ -429,22 +429,42 @@ namespace DTcms.DAL
         /// <summary>
         /// 根据用户名密码返回一个实体
         /// </summary>
-        public Model.users GetModel(string user_name, string password)
+        public Model.users GetModel(string user_name, string password, int emaillogin)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select id from dt_users");
-            strSql.Append(" where user_name=@user_name and password=@password and is_lock<3");
-            SqlParameter[] parameters = {
-					new SqlParameter("@user_name", SqlDbType.NVarChar,100),
-                    new SqlParameter("@password", SqlDbType.NVarChar,100)};
-            parameters[0].Value = user_name;
-            parameters[1].Value = password;
-
-            object obj = DbHelperSQL.GetSingle(strSql.ToString(), parameters);
-            if (obj != null)
+            if (emaillogin == 1)
             {
-                return GetModel(Convert.ToInt32(obj));
+                strSql.Append("select id from dt_users");
+                strSql.Append(" where (user_name=@user_name or email=@email) and password=@password and is_lock<3");
+                SqlParameter[] parameters = {
+					    new SqlParameter("@user_name", SqlDbType.NVarChar,100),
+                        new SqlParameter("@email", SqlDbType.NVarChar,50),
+                        new SqlParameter("@password", SqlDbType.NVarChar,100)};
+                parameters[0].Value = user_name;
+                parameters[1].Value = user_name;
+                parameters[2].Value = password;
+                object obj = DbHelperSQL.GetSingle(strSql.ToString(), parameters);
+                if (obj != null)
+                {
+                    return GetModel(Convert.ToInt32(obj));
+                }
             }
+            else
+            {
+                strSql.Append("select id from dt_users");
+                strSql.Append(" where user_name=@user_name and password=@password and is_lock<3");
+                SqlParameter[] parameters = {
+					    new SqlParameter("@user_name", SqlDbType.NVarChar,100),
+                        new SqlParameter("@password", SqlDbType.NVarChar,100)};
+                parameters[0].Value = user_name;
+                parameters[1].Value = password;
+                object obj = DbHelperSQL.GetSingle(strSql.ToString(), parameters);
+                if (obj != null)
+                {
+                    return GetModel(Convert.ToInt32(obj));
+                }
+            }
+            
             return null;
         }
 

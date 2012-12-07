@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by DTcms Template Engine at 2012/11/28 23:57:32.
-		本页面代码由DTcms模板引擎生成于 2012/11/28 23:57:32. 
+		This page was created by DTcms Template Engine at 2012-12-6 17:09:34.
+		本页面代码由DTcms模板引擎生成于 2012-12-6 17:09:34. 
 	*/
 
 	base.OnInit(e);
@@ -82,7 +82,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("\r\n      <li><a href=\"");
 	templateBuilder.Append(linkurl("usercenter","exit"));
 
-	templateBuilder.Append("\">注销</a></li>\r\n      <li><a href=\"");
+	templateBuilder.Append("\">退出</a></li>\r\n      <li><a href=\"");
 	templateBuilder.Append(linkurl("usercenter","index"));
 
 	templateBuilder.Append("\">会员中心</a></li>\r\n      ");
@@ -153,7 +153,9 @@ override protected void OnInit(EventArgs e)
 	else
 	{
 
-	templateBuilder.Append("\r\n        <img src=\"images/user_avatar.png\" alt=\"求真像\" />\r\n        ");
+	templateBuilder.Append("\r\n        <img src=\"");
+	templateBuilder.Append(Utils.ObjectToStr(config.templateskin));
+	templateBuilder.Append("images/user_avatar.png\" alt=\"求真像\" />\r\n        ");
 	}	//end if
 
 
@@ -323,10 +325,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(Utils.ObjectToStr(config.templateskin));
 	templateBuilder.Append("/images/pic_bg.png\" /></div>\r\n          </div>\r\n          <p style=\"text-align:center;\"><strong>头像预览区</strong></p>\r\n          <p style=\"text-align:center;\"><input id=\"btnSubmit\" name=\"btnSubmit\" type=\"button\" class=\"btn btn-success\" value=\"确定保存\" onclick=\"CropSubmit('");
 	templateBuilder.Append(Utils.ObjectToStr(config.webpath));
-	templateBuilder.Append("');return false;\" /></p>\r\n          <p>提示：生成头像大小180*180相素上传图片后，左侧选取图片合适大小，点击下面的保存按钮。</p>\r\n        </div>\r\n      </div>\r\n      <input id=\"hideFileName\" name=\"hideFileName\" type=\"hidden\" />\r\n      <input id=\"hideX1\" name=\"hideX1\" type=\"hidden\" value=\"0\" />\r\n      <input id=\"hideY1\" name=\"hideY1\" type=\"hidden\" value=\"0\" />\r\n      <input id=\"hideWidth\" name=\"hideWidth\" type=\"hidden\" value=\"0\" />\r\n      <input id=\"hideHeight\" name=\"hideHeight\" type=\"hidden\" value=\"0\" />\r\n      <input id=\"turl\" name=\"turl\" type=\"hidden\" value=\"");
-	templateBuilder.Append(linkurl("usercenter","avatar"));
-
-	templateBuilder.Append("\" />\r\n    </form>\r\n    <!--/设置头像-->\r\n    ");
+	templateBuilder.Append("');return false;\" /></p>\r\n          <p>提示：生成头像大小180*180相素上传图片后，左侧选取图片合适大小，点击下面的保存按钮。</p>\r\n        </div>\r\n      </div>\r\n      <input id=\"hideFileName\" name=\"hideFileName\" type=\"hidden\" />\r\n      <input id=\"hideX1\" name=\"hideX1\" type=\"hidden\" value=\"0\" />\r\n      <input id=\"hideY1\" name=\"hideY1\" type=\"hidden\" value=\"0\" />\r\n      <input id=\"hideWidth\" name=\"hideWidth\" type=\"hidden\" value=\"0\" />\r\n      <input id=\"hideHeight\" name=\"hideHeight\" type=\"hidden\" value=\"0\" />\r\n    </form>\r\n    <!--/设置头像-->\r\n    ");
 	}
 	else if (action=="invite")
 	{

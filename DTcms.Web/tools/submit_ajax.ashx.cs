@@ -406,7 +406,7 @@ namespace DTcms.Web.tools
             }
             if (modelGroup.amount > 0)
             {
-                new BLL.amount_log().Add(model.id, model.user_name, DTEnums.AmountTypeEnum.SysGive.ToString(), modelGroup.point, "注册赠送金额", 1);
+                new BLL.amount_log().Add(model.id, model.user_name, DTEnums.AmountTypeEnum.SysGive.ToString(), modelGroup.amount, "注册赠送金额", 1);
             }
             //判断是否发送站内短消息
             if (userConfig.regmsgstatus == 1)
@@ -619,7 +619,7 @@ namespace DTcms.Web.tools
             }
 
             BLL.users bll = new BLL.users();
-            Model.users model = bll.GetModel(username, DESEncrypt.Encrypt(password));
+            Model.users model = bll.GetModel(username, DESEncrypt.Encrypt(password), userConfig.emaillogin);
             if (model == null)
             {
                 context.Response.Write("{msg:0, msgbox:\"错误提示：用户名或密码错误，请重试！\"}");

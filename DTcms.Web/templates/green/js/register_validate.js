@@ -89,33 +89,3 @@ $(function() {
 		$("#chkAgree").attr("disabled", "");
 	}
 });
-
-//=====================发送验证邮件=====================
-function SendEmail(username, sendurl) {
-	if(username == ""){
-		$.ligerDialog.warn('对不起，用户名不允许为空！');
-		return false;
-	}
-	//提交
-	$.ajax({
-		url: sendurl,
-		type: "POST",
-		timeout: 60000,
-		data: {
-			username: function () {
-				return username;
-			}
-		},
-		dataType: "json",
-		success: function (data, type) {
-			if (data.msg == 1) {
-				$.ligerDialog.success(data.msgbox);
-			} else {
-				$.ligerDialog.warn(data.msgbox);
-			}
-		},
-		error: function(XMLHttpRequest, textStatus, errorThrown){
-			 $.ligerDialog.error("状态：" + textStatus + "；出错提示：" + errorThrown);
-		}
-	});
-}

@@ -462,13 +462,13 @@ input.btn, button.btn{border-left:0 none;border-right:0 none;border-top:0 none;c
 	.reg-top ul li em{ margin-right:5px; padding:2px 5px; background:#999; color:#FFF; font-size:12px; font-family:Verdana, Geneva, sans-serif; }
 	.reg-top .step .step1,
 	.reg-top .stepsendmail .step2,
-	.reg-top .stepcheckmail .step2,
+	.reg-top .stepcheckmail .step3,
 	.reg-top .stepcheckerror .step2,
 	.reg-top .stepverify .step2,
 	.reg-top .stepsucceed .step3{color:#FF6C1E;}
 	.reg-top .step .step1 em,
 	.reg-top .stepsendmail .step2 em,
-	.reg-top .stepcheckmail .step2 em,
+	.reg-top .stepcheckmail .step3 em,
 	.reg-top .stepcheckerror .step2 em,
 	.reg-top .stepverify .step2 em,
 	.reg-top .stepsucceed .step3 em{background:#FF6C1E; }
