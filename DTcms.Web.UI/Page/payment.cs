@@ -64,7 +64,7 @@ namespace DTcms.Web.UI.Page
                         //检查订单号是否已支付
                         if (amountModel.status == 1)
                         {
-                            HttpContext.Current.Response.Redirect(linkurl("payment1", "succeed", order_type, orderModel.order_no));
+                            HttpContext.Current.Response.Redirect(linkurl("payment1", "succeed", order_type, amountModel.order_no));
                             return;
                         }
                         //检查支付方式
@@ -133,7 +133,7 @@ namespace DTcms.Web.UI.Page
                     break;
                 case "succeed":
                     //检查订单的类型(充值或购物)
-                    if (order_type == DTEnums.AmountTypeEnum.Convert.ToString()) //充值
+                    if (order_type == DTEnums.AmountTypeEnum.Recharge.ToString()) //充值
                     {
                         amountModel = new BLL.amount_log().GetModel(order_no);
                         if (amountModel == null)

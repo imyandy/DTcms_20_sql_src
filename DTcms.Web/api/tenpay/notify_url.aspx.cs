@@ -47,15 +47,15 @@ namespace DTcms.Web.api.tenpay
                     if (queryRes.isTenpaySign())
                     {
                         //取结果参数做业务处理
-                        string out_trade_no = queryRes.getParameter("out_trade_no");
+                        string out_trade_no = resHandler.getParameter("out_trade_no");
                         //财付通订单号
-                        string transaction_id = queryRes.getParameter("transaction_id");
+                        string transaction_id = resHandler.getParameter("transaction_id");
                         //金额,以分为单位
-                        string total_fee = queryRes.getParameter("total_fee");
+                        string total_fee = resHandler.getParameter("total_fee");
                         //如果有使用折扣券，discount有值，total_fee+discount=原请求的total_fee
-                        string discount = queryRes.getParameter("discount");
+                        string discount = resHandler.getParameter("discount");
                         //订单类型
-                        string order_type = queryRes.getParameter("attach");
+                        string order_type = resHandler.getParameter("attach");
                         //支付结果
                         string trade_state = resHandler.getParameter("trade_state");
                         //交易模式，1即时到帐 2中介担保
@@ -64,10 +64,8 @@ namespace DTcms.Web.api.tenpay
                         //判断签名及结果
                         if ("0".Equals(queryRes.getParameter("retcode")))
                         {
-                            //Response.Write("id验证成功");
-
                             if ("1".Equals(trade_mode))
-                            {       //即时到账 
+                            {   //即时到账 
                                 if ("0".Equals(trade_state))
                                 {
                                     //------------------------------
@@ -81,7 +79,7 @@ namespace DTcms.Web.api.tenpay
                                     if (order_type.ToLower() == DTEnums.AmountTypeEnum.Recharge.ToString().ToLower()) //在线充值
                                     {
                                         BLL.amount_log bll = new BLL.amount_log();
-                                        Model.amount_log model = bll.GetModel(transaction_id);
+                                        Model.amount_log model = bll.GetModel(out_trade_no);
                                         if (model == null)
                                         {
                                             Response.Write("该订单号不存在");
@@ -104,7 +102,7 @@ namespace DTcms.Web.api.tenpay
                                     else if (order_type.ToLower() == DTEnums.AmountTypeEnum.BuyGoods.ToString().ToLower()) //购买商品
                                     {
                                         BLL.orders bll = new BLL.orders();
-                                        Model.orders model = bll.GetModel(transaction_id);
+                                        Model.orders model = bll.GetModel(out_trade_no);
                                         if (model == null)
                                         {
                                             Response.Write("该订单号不存在");
@@ -115,7 +113,7 @@ namespace DTcms.Web.api.tenpay
                                             Response.Write("订单金额和支付金额不相符");
                                             return;
                                         }
-                                        bool result = bll.UpdateField(transaction_id, "payment_status=2,payment_time='" + DateTime.Now + "'");
+                                        bool result = bll.UpdateField(out_trade_no, "payment_status=2,payment_time='" + DateTime.Now + "'");
                                         if (!result)
                                         {
                                             Response.Write("修改订单状态失败");

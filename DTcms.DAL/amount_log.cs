@@ -101,7 +101,7 @@ namespace DTcms.DAL
             strSql.Append("value=@value,");
             strSql.Append("remark=@remark,");
             strSql.Append("status=@status,");
-            strSql.Append("add_time=@add_time");
+            strSql.Append("add_time=@add_time,");
             strSql.Append("complete_time=@complete_time");
             strSql.Append(" where id=@id");
             SqlParameter[] parameters = {
