@@ -67,7 +67,7 @@
     </HeaderTemplate>
     <ItemTemplate>
       <tr>
-        <td align="center"><asp:CheckBox ID="chkId" CssClass="checkall" runat="server" /><asp:HiddenField ID="hideSkinName" runat="server" Value='<%#Eval("skinname") %>' /></td>
+        <td align="center"><asp:CheckBox ID="chkId" CssClass="checkall" Checked='<%#Eval("skinname").ToString().ToLower() == siteConfig.templateskin ? true : false%>' runat="server" /><asp:HiddenField ID="hideSkinName" runat="server" Value='<%#Eval("skinname") %>' /></td>
         <td><%#Eval("name")%> <img src="../images/icon_view.gif" bigimg="<%#Eval("img")%>" title="查看预览图" class="imgtip" /></td>
         <td align="center"><%#Eval("author")%></td>
         <td align="center"><%#Eval("createdate")%></td>

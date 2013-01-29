@@ -84,6 +84,10 @@ namespace DTcms.BLL
         {
             return dal.Delete(id);
         }
+        public bool Delete(int id, string user_name)
+        {
+            return dal.Delete(id, user_name);
+        }
         
         /// <summary>
         /// 得到一个对象实体

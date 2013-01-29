@@ -10,9 +10,7 @@ function CropSubmit(webpath) {
 		success: function(data, textStatus) {
 			if (data.msg == 1){
 				$.ligerDialog.success("头像上传成功！",function(){
-					if($("#turl").length > 0 && $("#turl").val() != ""){
-						location.href = $("#turl").val();
-					}
+				    location.reload();
 				});
 			} else {
 				$.ligerDialog.warn(data.msgbox);

@@ -48,7 +48,7 @@
     });
     //初始化上传控件
     $(function () {
-        InitSWFUpload("../../tools/upload_ajax.ashx", "Filedata", "2 MB", "../../scripts/swfupload/swfupload.swf", 1, 1);
+        InitSWFUpload("../../tools/upload_ajax.ashx", "Filedata", "<%=siteConfig.attachimgsize%> KB", "../../scripts/swfupload/swfupload.swf", 1, 1);
     });
 </script>
 </head>

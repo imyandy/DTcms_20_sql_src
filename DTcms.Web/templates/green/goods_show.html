@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -102,7 +102,15 @@
             <dd>{model.add_time}</dd>
           </dl>
           <!--扩展属性开始-->
-          <!--/扩展属性结束-->
+          <%if model.attribute_values!=null%>
+          <%loop (DTcms.Model.attribute_value) modelt model.attribute_values%>
+          <dl>
+            <dt>{modelt.title}：</dt>
+            <dd>{modelt.content}</dd>
+          </dl>
+          <%/loop%>
+          <%/if%>
+          <!--扩展属性结束-->
         </div>
         <div class="pro-btns">
 		  <div class="input-box">

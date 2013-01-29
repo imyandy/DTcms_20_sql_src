@@ -639,18 +639,17 @@ namespace DTcms.Web.tools
             context.Session[DTKeys.SESSION_USER_INFO] = model;
             context.Session.Timeout = 45;
             //记住登录状态下次自动登录
-            Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "DTcms", model.user_name, 43200);
             if (remember.ToLower() == "true")
             {
+                Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "DTcms", model.user_name, 43200);
                 Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "DTcms", model.password, 43200);
             }
             else
             {
-                Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "DTcms", model.password, -43200);
+                //防止Session提前过期
+                Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "DTcms", model.user_name);
+                Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "DTcms", model.password);
             }
-            //防止Session提前过期
-            Utils.WriteCookie("UserName", "DTcms", model.user_name);
-            Utils.WriteCookie("Password", "DTcms", model.password);
 
             //写入登录日志
             new BLL.user_login_log().Add(model.id, model.user_name, "会员登录", DTRequest.GetIP());
@@ -954,7 +953,7 @@ namespace DTcms.Web.tools
             string[] arrId = check_id.Split(',');
             for (int i = 0; i < arrId.Length; i++)
             {
-                new BLL.user_message().Delete(int.Parse(arrId[i]));
+                new BLL.user_message().Delete(int.Parse(arrId[i]), model.user_name);
             }
             context.Response.Write("{msg:1, msgbox:\"删除短信息成功啦！\"}");
             return;
@@ -1106,7 +1105,7 @@ namespace DTcms.Web.tools
             string[] arrId = check_id.Split(',');
             for (int i = 0; i < arrId.Length; i++)
             {
-                new BLL.point_log().Delete(int.Parse(arrId[i]));
+                new BLL.point_log().Delete(int.Parse(arrId[i]), model.user_name);
             }
             context.Response.Write("{msg:1, msgbox:\"积分明细删除成功啦！\"}");
             return;
@@ -1170,7 +1169,7 @@ namespace DTcms.Web.tools
             string[] arrId = check_id.Split(',');
             for (int i = 0; i < arrId.Length; i++)
             {
-                new BLL.amount_log().Delete(int.Parse(arrId[i]));
+                new BLL.amount_log().Delete(int.Parse(arrId[i]), model.user_name);
             }
             context.Response.Write("{msg:1, msgbox:\"收支明细删除成功啦！\"}");
             return;

@@ -99,6 +99,27 @@ namespace DTcms.DAL
                 return false;
             }
         }
+        public bool Delete(int id, string user_name)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("delete from dt_point_log ");
+            strSql.Append(" where id=@id and user_name=@user_name");
+            SqlParameter[] parameters = {
+					new SqlParameter("@id", SqlDbType.Int,4),
+                    new SqlParameter("@user_name", SqlDbType.NVarChar,100)};
+            parameters[0].Value = id;
+            parameters[1].Value = user_name;
+
+            int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         /// <summary>
         /// 得到一个对象实体
